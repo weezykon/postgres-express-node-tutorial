@@ -5,6 +5,9 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// routes
+const auth = require('./server/routes/auth');
+
 const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -29,5 +32,7 @@ app.get('/', (req, res, next) => {
   });
   next();
 });
+
+app.use('/auth', auth);
 
 module.exports = app;
