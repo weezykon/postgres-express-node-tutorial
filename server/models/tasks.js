@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 'use strict';
 const {
   Model
@@ -20,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     projectid: DataTypes.INTEGER,
     user: DataTypes.INTEGER,
-    priority: DataTypes.ENUM,
-    section: DataTypes.ENUM,
+    priority: DataTypes.ENUM('low', 'medium', 'high'),
+    section: DataTypes.ENUM('todo', 'in progress', 'complete'),
     active: DataTypes.BOOLEAN,
     createdAt: DataTypes.DATE,
   }, {
