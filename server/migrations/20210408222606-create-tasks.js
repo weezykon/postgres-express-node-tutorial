@@ -27,12 +27,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       priority: {
-        type:   Sequelize.ENUM,
-        values: ['low', 'medium', 'high']
+        type:   DataTypes.ENUM,
+        values: ['low', 'medium', 'high'],
+        defaultValue: 'low'
       },
       section: {
-        type:   Sequelize.ENUM,
-        values: ['todo', 'in progress', 'complete']
+        type:   DataTypes.ENUM,
+        values: ['todo', 'in progress', 'complete'],
+        defaultValue: 'todo'
       },
       active: {
         type: Sequelize.BOOLEAN
