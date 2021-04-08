@@ -13,14 +13,13 @@ exports.login = async (req, res) => {
     try {
         // validate request
         await validateLogin(req.body);
-
         // authenticate the user
         const user = await authService.checkUser(req.body);
-        if(user === null) return res.status(400).json({ status: 'error', message: 'Invalid Credentials' });
+        if (user === null) return res.status(400).json({ status: 'error', message: 'Invalid Credentials' });
 
         // Validate Password
         const checkPassword = await authService.validatePassword(req.body, user.password);
-        if(!checkPassword) return res.status(400).json({ status: 'error', message: 'Invalid Credentials' });
+        if (!checkPassword) return res.status(400).json({ status: 'error', message: 'Invalid Credentials' });
 
         // creating token
         const token = jwt.sign({ id: user.id, email: user.email }, TokenSecret);
